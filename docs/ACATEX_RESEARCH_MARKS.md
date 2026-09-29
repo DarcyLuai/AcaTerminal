@@ -43,7 +43,7 @@ Project Discovery still sends at most five validated public DOI/OpenAlex IDs. Pr
 
 `./scripts/build.sh --check` includes native AcaTex import, stable identity, duplicate prevention, conflicts, export guards, per-mark evidence relationships, persistence, migration, local discovery hints and route parsing. `./scripts/check-research-marks.sh <isolated-dir> prepare` generates a native AcaTex project and an independent PDF, captures a real PDFKit selection, saves SQLite and exports evidence.
 
-These generated fixtures are not demo content inserted into user libraries. Build 9's integration report records the earlier isolated companion experiment; it is historical, not a requirement or current deliverable. See `BUILD10_VERIFICATION.md` for this Terminal-only polish and its verified boundaries.
+These generated fixtures are not demo content inserted into user libraries. See [the integration verification record](BUILD11_VERIFICATION.md) for the installed-app workflow and its verified boundaries.
 
 ## Build 11 verification
 

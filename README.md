@@ -133,7 +133,7 @@ Follow publications and citation information using **OpenAlex**:
 
 You can also save a **Google Scholar profile link** to open in your browser. AcaTerminal does not scrape Google Scholar or import its citation counts.
 
-Notification preferences cover new citations, submission changes, and important literature changes. Native notifications require macOS permission. Monitoring runs through in-app refreshes, not an always-running cloud service; see the [verification record](docs/BUILD10_VERIFICATION.md) and [current limits](docs/DEVELOPMENT.md#known-boundaries).
+Notification preferences cover new citations, submission changes, and important literature changes. Native notifications require macOS permission. Monitoring runs through in-app refreshes, not an always-running cloud service; see the [verification record](docs/BUILD11_VERIFICATION.md) and [current limits](docs/DEVELOPMENT.md#known-boundaries).
 
 ### 🔗 Connected Services
 
@@ -166,14 +166,14 @@ The visual direction follows AcaTex: research content should remain more promine
 
 The first version is built for **macOS 13 or later**. Other platforms are not included.
 
-AcaTerminal is an **early open-source release, v0.1 build 11**. The core workflow is:
+AcaTerminal is an **early open-source release, v0.1**. The core workflow is:
 
 ```text
 Literature → Reading → Evidence → Claims / Arguments
                     → Research Project → Submission → Impact
 ```
 
-The application and data model will continue evolving. Current builds are locally ad-hoc signed, not Developer ID–signed or notarized distributions. [Verified behavior and remaining boundaries](docs/BUILD10_VERIFICATION.md) are documented separately.
+The application and data model will continue evolving. Current builds are locally ad-hoc signed, not Developer ID–signed or notarized distributions. [Verified behavior and remaining boundaries](docs/BUILD11_VERIFICATION.md) are documented separately.
 
 ## Build from Source
 
@@ -325,7 +325,7 @@ AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 
 可以保存 **Google Scholar 主页链接**并在浏览器打开；AcaTerminal 不抓取 Google Scholar，也不导入其引用数量。
 
-通知设置涵盖新引用、投稿状态变化和重要文献动态，需要 macOS 通知权限。监测依赖应用内刷新，不是持续运行的云端服务；实际验证范围见 [验证记录](docs/BUILD10_VERIFICATION.md)和[当前限制](docs/DEVELOPMENT.md#known-boundaries)。
+通知设置涵盖新引用、投稿状态变化和重要文献动态，需要 macOS 通知权限。监测依赖应用内刷新，不是持续运行的云端服务；实际验证范围见 [验证记录](docs/BUILD11_VERIFICATION.md)和[当前限制](docs/DEVELOPMENT.md#known-boundaries)。
 
 ### 🔗 外部服务
 
@@ -358,14 +358,14 @@ AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 
 第一版面向 **macOS 13 及以上版本**，不包含其他平台。
 
-当前为**早期开源版本 v0.1 build 11**，首先建立基础研究链：
+当前为**早期开源版本 v0.1**，首先建立基础研究链：
 
 ```text
 文献 → 阅读 → Evidence → Claim / 论证
           → 研究项目 → 投稿 → 影响力
 ```
 
-功能和数据结构仍会继续完善。当前构建使用本地 ad-hoc 签名，尚不是经过 Developer ID 签名和公证的发行包。[已验证内容与剩余边界](docs/BUILD10_VERIFICATION.md)
+功能和数据结构仍会继续完善。当前构建使用本地 ad-hoc 签名，尚不是经过 Developer ID 签名和公证的发行包。[已验证内容与剩余边界](docs/BUILD11_VERIFICATION.md)
 
 ### 从源码构建
 
