@@ -1,115 +1,395 @@
+<a id="english"></a>
+
 # AcaTerminal
 
-**Your research, from idea to impact.**
+**A local-first research workspace for reading, organizing, connecting, and tracking academic work.**
 
-AcaTerminal is a native macOS research lifecycle client. Papers, research questions, claims, evidence, manuscripts, submission histories and attributed impact snapshots share a local workspace. Zotero remains your library provider.
+[English](#english) · [中文](#chinese)
 
-This is an independently implemented **v0.1 developer MVP**, not a signed public release. There is no cloud service, AI chat or journal-browser automation.
+AcaTerminal is an open-source desktop workspace designed around the academic research lifecycle.
 
-## Run on macOS
+Instead of treating papers, notes, arguments, submissions, and research impact as separate tasks, AcaTerminal brings them into one place—from reading a paper to developing an argument, tracking a submission, and following the later impact of your work.
 
-Requires macOS 13+ and Apple Swift 5.8+ (Command Line Tools or Xcode). No third-party package download is required.
+Built first for **macOS**, with a focus on privacy, simplicity, and a calm research experience.
+
+## Overview
+
+Academic work rarely ends with managing a PDF library. A paper becomes evidence. Evidence contributes to an argument. Arguments become manuscripts. Manuscripts become submissions. Published work generates citations and new research questions.
+
+AcaTerminal is built around these connections. The first release focuses on six parts of the research workflow:
+
+- **Library** — manage and read academic papers.
+- **Projects** — organize literature around research projects.
+- **Arguments** — connect claims and evidence.
+- **Research Marks** — work with structured research marks from AcaTex.
+- **Submissions** — track manuscripts and submission history.
+- **Impact** — follow publications and citation information.
+
+## Features
+
+### Research Library
+
+Keep academic papers in a local research library.
+
+- Import PDFs, Word documents, and text files.
+- Optionally add or edit bibliographic metadata.
+- Search your library and organize papers into projects.
+- Double-click a paper or book to read it.
+- Continue reading from your previous position.
+
+Your library and private research structure remain on your Mac.
+
+### Academic PDF Reader
+
+AcaTerminal includes a native PDFKit reader designed for research.
+
+- Continuous scrolling, search, and zoom controls.
+- Reading-position restoration and reading progress.
+- Highlights and annotations.
+- Focus Mode and an optional document outline.
+- Research actions directly from selected text.
+
+Selected passages can become part of your research workflow instead of remaining isolated highlights.
+
+### Claims & Evidence
+
+Use passages from papers as **Evidence** and connect them to **Claims** inside a project:
+
+```text
+Paper → Passage → Evidence → Claim → Argument
+```
+
+Choose the relationship yourself: supports, challenges, qualifies, extends, or background. Evidence retains its source, page, quote, and available selection anchor, so you can return to the original passage in the Reader.
+
+Internal identifiers remain hidden from the everyday interface. AcaTerminal presents research objects through their content, source, and location.
+
+### AcaTex Research Marks
+
+Connect a saved local AcaTex project to read its structured research marks:
+
+- Research Question
+- Claim
+- Hypothesis
+- Finding
+
+Imported marks preserve their underlying identity, allowing AcaTerminal to recognize updates without creating duplicate research objects. Marks appear alongside project literature and evidence. Conflicting edits are retained for review.
+
+Available actions include:
+
+- Edit mark text locally.
+- Show the related AcaTex project in Finder.
+- Find related papers.
+- Export Research Marks to a local exchange file.
+
+Connecting a project does not require an account or upload manuscript content. Exporting marks does not modify the source manuscript. See [Research Marks](docs/ACATEX_RESEARCH_MARKS.md) for supported formats and compatibility.
+
+### Literature Discovery
+
+Find literature related to a project's existing sources, then consider its relevance to your research questions and arguments.
+
+Discovery helps you explore:
+
+- What should I read next?
+- What literature is related to this project?
+- What work may be relevant to this claim?
+- What might be missing from the current literature set?
+
+Recommendations include reasons and feedback actions. Potential support or challenge labels are **keyword-based suggestions to verify**, not academic judgments. OpenAlex queries use public paper identifiers; private mark text is matched locally against returned public results.
+
+### Research Projects
+
+A project can represent a paper, a research question, or a longer research agenda. It brings together literature, claims, evidence, Research Marks, related-paper discovery, and research activity.
+
+The project interface has three primary views:
+
+**Literature · Argument · Activity**
+
+Manage sources, develop arguments, and review changes without crowding them into one screen.
+
+### Submission Tracking
+
+Keep the research lifecycle visible after a manuscript leaves the writing environment.
+
+Record the journal, manuscript title, submission date, manuscript ID, submission-system URL, current status, and status history.
+
+Start with a URL and supplement the available information. **Private journal statuses are updated manually**; supported public OpenReview decisions can be refreshed. AcaTerminal does not automate journal logins or store journal passwords.
+
+### Research Impact
+
+Follow publications and citation information using **OpenAlex**:
+
+- Citation counts with their data source clearly identified.
+- Annual, cumulative, and per-paper charts.
+- Locally retained citation snapshots and newly detected citing works.
+- Research impact updates in Today.
+
+You can also save a **Google Scholar profile link** to open in your browser. AcaTerminal does not scrape Google Scholar or import its citation counts.
+
+Notification preferences cover new citations, submission changes, and important literature changes. Native notifications require macOS permission. Monitoring runs through in-app refreshes, not an always-running cloud service; see the [verification record](docs/BUILD10_VERIFICATION.md) and [current limits](docs/DEVELOPMENT.md#known-boundaries).
+
+### Connected Services
+
+| Service | Role |
+| --- | --- |
+| **Zotero** | Import collections, items, metadata, and notes through the official local API or a read-only Web API key. |
+| **OpenAlex** | Retrieve scholarly metadata, related literature, and citation information. |
+| **ORCID** | Look up researcher identity information; the developer OAuth flow requires your own registered client. |
+
+The core workspace stays local while external scholarly services provide metadata where useful. Zotero remains a library provider; AcaTerminal does not replace it.
+
+## Local First & Privacy
+
+Research projects may contain unpublished manuscripts, hypotheses, arguments, annotations, and other private academic material. Your core research data is stored locally by default.
+
+External services are used for requested metadata, citation information, and accessible full text. Private notes, claims, evidence, manuscripts, and PDFs are not uploaded to discovery providers. API credentials use macOS Keychain; the local research database is not encrypted by AcaTerminal itself.
+
+Review the privacy policies and terms of any third-party services you use. See [storage and backup details](docs/DEVELOPMENT.md#storage-and-privacy).
+
+## Interface
+
+- System, Light, Dark, and Comfort / Eye Comfort appearance.
+- English and 简体中文.
+- Restrained transitions that respect Reduce Motion.
+- Focus Mode and native macOS interactions.
+
+The visual direction follows AcaTex: research content should remain more prominent than application controls.
+
+## Platform & Status
+
+The first version is built for **macOS 13 or later**. Other platforms are not included.
+
+AcaTerminal is an **early open-source release, v0.1 build 10**. The core workflow is:
+
+```text
+Literature → Reading → Evidence → Claims / Arguments
+                    → Research Project → Submission → Impact
+```
+
+The application and data model will continue evolving. Current builds are locally ad-hoc signed, not Developer ID–signed or notarized distributions. [Verified behavior and remaining boundaries](docs/BUILD10_VERIFICATION.md) are documented separately.
+
+## Build from Source
+
+Requires macOS 13+ and Apple Swift 5.8+ through Xcode or Command Line Tools. No third-party Swift packages are required.
 
 ```sh
+git clone https://github.com/DarcyLuai/AcaTerminal.git
+cd AcaTerminal
 ./scripts/package.sh --check
 open dist/AcaTerminal.app
 ```
 
-The build produces a locally ad-hoc-signed app. Signing with a Developer ID and notarization are still required before public distribution. The included binary is built for the host architecture; source builds support Intel or Apple silicon.
+See the [development guide](docs/DEVELOPMENT.md) for build options, tests, storage, and current limitations.
 
-With full Xcode, open `Package.swift`, select the AcaTerminal executable and run on My Mac. On a full developer installation, `swift build` and `swift run AcaChecks` are also supported. The direct build script works around SwiftPM's missing PlatformPath on Command Line Tools-only installations; it does not change the system toolchain.
+## Relationship with AcaTex
 
-## Start a research workflow
+**AcaTex** focuses on writing and structuring academic manuscripts.
 
-1. Import a PDF, Word or text document (⌘O), or select **Zotero → Connect & Review Import**. Bibliographic details are optional and can be edited later.
-2. Create a project (⇧⌘N), enter a research question and add papers.
-3. Double-click a paper or book to open the native Reader. Select text → right-click → **Evidence**, choose a Project and optionally a Claim. Use **Claim** to write your own assertion separately from the source statement.
-4. Paste a submission URL. Retrieve public information where supported and supplement missing details. Private journal statuses remain manual; OpenReview public decisions can be refreshed.
-5. Look up an ORCID iD in **My Research**, then use **Refresh Now** to establish a citation baseline. Charts and citation events remain available offline.
-6. Use **Find full text** for local/Zotero, OpenAlex, Unpaywall (contact email required) and arXiv versions. Legal OA PDFs open in the existing Reader with version attribution.
-7. Export a paper's versioned `AcaResearchExchange` JSON from the detail menu for future AcaTex integration.
+**AcaTerminal** focuses on literature, evidence, arguments, projects, submissions, and research impact. It can read structured Research Marks from saved AcaTex projects and use them in its project workflow.
 
-A clean installation starts empty. There are no sample records or sample workspace controls. Settings → General → Interface language switches between English, 简体中文 and the system language. The native AcaTerminal menu contains About and Settings; Help contains privacy information and the GPL-3.0 license.
+The two applications remain independently usable.
 
-## v0.1 build 8
+## Open Source
 
-Reader zoom now changes real available reading space before magnifying PDF content. Toolbar buttons, native Reader menu and trackpad magnification share the same reversible zoom state. ⌘0 fits width; ⌘+ / ⌘− zoom; ⇧⌘F focuses. Outline and research panels reserve their own widths. Older saved reading positions remain compatible.
+Contributions, bug reports, feature discussions, and research-workflow suggestions are welcome. Feedback from real academic projects is especially valuable.
 
-Projects have three primary areas: **Literature**, **Argument**, **Activity**. Discovery opens from Literature; List/Graph are secondary Argument views, and Changes/Timeline are secondary Activity views. The research question stays at the top; the graph inspector appears on selection and the project list can be collapsed.
+- [Contributing](CONTRIBUTING.md)
+- [Architecture](ARCHITECTURE.md)
+- [Connector guide](docs/CONNECTOR_GUIDE.md)
+- [Prior art and independent implementation](docs/PRIOR_ART.md)
+- [Report an issue](https://github.com/DarcyLuai/AcaTerminal/issues)
 
-See [build 8 verification](docs/BUILD8_VERIFICATION.md) and [build 7 Advanced verification](docs/ADVANCED_VERIFICATION.md).
+## License
 
-## Included
+Licensed under the **GNU General Public License v3.0 only (`GPL-3.0-only`)**. See [LICENSE](LICENSE) and [COPYRIGHT](COPYRIGHT).
 
-- Native SwiftUI window, aligned spacious settings, English/简体中文 UI, system menus, System/Light/Eye Comfort/Dark appearance and keyboard shortcuts.
-- Local searchable library, native PDFKit reader, outline/lazy page thumbnails, async PDF search, Focus mode, reading-position restoration and local highlights.
-- Selection → Evidence / Claim / Note with paper/page attribution, optional claim association and inspector drag-and-drop.
-- Citation copy and exchange export.
-- Research projects, claims and evidence with supports/contradicts/extends/background relationships.
-- URL-first submissions, optional details, OpenReview public decision lookup, raw + normalized statuses, dated timeline and duplicate-observation suppression.
-- Zotero official local API or Web API v3: paginated collection/item/note import, API key in Keychain, exact-ID merge and manual ambiguity review.
-- OpenAlex DOI/Work ID lookup, cursor-paginated author works and citing works, retained citation snapshots and provider-attributed annual/cumulative/per-paper charts.
-- Citation ID monitoring, deduplicated events, citation detail → Reader/Project, Today activity and native macOS notifications.
-- Full-text resolution with published/accepted/preprint provenance, OA downloads and publisher/institutional landing links.
-- Personal developer ORCID OAuth flow using the official browser authorize/token endpoints, expiring state-checked callback and Keychain token storage.
-- Shared AcaCore, AcaStorage and AcaConnectors Swift modules; UI and AppKit stay in the macOS executable.
+---
 
-## Known boundaries
+<a id="chinese"></a>
 
-- **ORCID production one-click OAuth is not configured.** The developer flow requires the user's own registered API client and HTTPS redirect URI, with a manually pasted callback. No shared secret is embedded. Public profile lookup is clearly marked unauthenticated. See [OAuth design](docs/OAUTH.md).
-- Zotero authentication currently uses a user-generated read-only Web API key or the official local read API. Zotero OAuth 1.0a registration is future work. No Zotero database is opened directly; imports never write back or delete local records after a remote deletion.
-- Zotero notes import as plain text. Local PDFs and documented Zotero PDF attachment downloads are supported; live account downloads still need verification. Annotation sync, OCR, moved-file bookmarks and selective Paper Tint are deferred. PDF colors remain unchanged. See [Reading Environment](docs/READING_ENVIRONMENT.md).
-- OpenAlex author and citing-work queries paginate completely up to a 10,000-record safety limit; incomplete observations do not update a citation baseline. First monitoring establishes a silent baseline. “New” means newly detected locally, not necessarily newly published. Annual cumulative charts cover only API-provided years.
-- Unpaywall requires your contact email in Settings; its adapter has fixture coverage but no live verification in this build. System notifications require macOS permission. Event deduplication is tested; OS banner delivery/click routing still needs permission-enabled end-to-end verification.
-- This increment stops at Phase H. Semantic Scholar, citation graphs and always-running/cloud monitoring are deferred.
-- Crossref/Semantic Scholar and automated journal connectors are extension points, not shipped implementations. There is no Google Scholar scraper.
-- AcaTex export is implemented; AcaTex-side ingestion and manuscript round-trip are not.
-- No iOS app has been built. Shared modules declare iOS 16 compatibility but have not been compiled with an iOS SDK on this machine.
-- This MVP supports adding and connecting research; full editing/deletion, undo, accessibility audit, broader language coverage, incremental sync and large-library performance work remain before a public release.
+## 中文
 
-## Storage and privacy
+[↑ Back to English](#english)
 
-Real data: `~/Library/Application Support/AcaTerminal/research.sqlite`.
+**一个面向研究者的本地优先研究工作台。**
 
+AcaTerminal 是一个开源桌面研究工作台，把阅读文献、整理证据、构建论证、管理研究项目、追踪投稿和关注研究影响力放进同一个工作流。
 
-All research state, citation history, events and known citing IDs stay local. Service actions, requested full text and uncached Zotero attachments use the network. When enabled, impact refreshes on launch only if the last attempt is at least 24 hours old; there is no repeating timer or server. Only public identifiers and configured API credentials/contact email go to the relevant provider; private notes, claims, manuscripts and PDF contents are never uploaded. Local Zotero reads use loopback port 23119; external requests use HTTPS. API keys, ORCID personal-client secrets and access tokens use Apple Keychain. No passwords, browser cookies or telemetry are collected.
+首个版本面向 **macOS**，强调本地优先、隐私、简洁以及舒适的研究体验。
 
-For backups, quit the app and copy its Application Support directory, including SQLite sidecars if present. New PDF/Word/text imports are copied under Application Support/Documents, including their originals. Older externally attached PDFs remain at their original locations and need their own backups; downloaded Zotero PDFs are cached under Application Support/Attachments. An unreadable or newer database is reported, never silently replaced. Database contents are not encrypted by this app; credentials are stored separately in Keychain.
+### AcaTerminal 是什么？
 
-For isolated development or UI tests, set `ACATERMINAL_DATA_DIR` to a test directory before launching the executable. Never use a real research database as a test fixture.
+学术研究并不会停在「管理 PDF」。一篇论文会成为证据，证据会进入论证，论证会成为稿件，稿件会进入投稿流程。发表后的研究又会产生引用和新的研究问题。
 
-Research edits publish immediately while saving on a serial background queue. The interface shows pending/error state; quitting waits for writes. Settings can export all in-memory research if persistence fails. Payload formats 1–4 migrate to format 5 with a local raw-payload backup before saving; the SQLite table schema remains version 1. Older binaries reject format 5 and must not edit an upgraded database.
+AcaTerminal 希望连接这一整条研究链。第一版主要覆盖：
 
-## Verification
+- **文献库** — 管理与阅读论文。
+- **研究项目** — 围绕具体研究组织文献。
+- **论证** — 管理 Claim 与 Evidence。
+- **Research Marks** — 使用来自 AcaTex 的结构化研究标记。
+- **投稿** — 记录稿件与投稿进度。
+- **影响力** — 查看论文与引用信息。
 
-```sh
-./scripts/build.sh --check    # deterministic, offline behavior checks
-./scripts/check-reader.sh     # native PDFKit + persistence integration checks
-./scripts/check-documents.sh  # Word/PDF/text import and native annotation menu checks
-./scripts/check-appearance.sh # packaged English/Chinese resources + transparent icon
-./scripts/check-impact-live.sh # optional real OpenAlex + arXiv smoke checks
+### 文献库
+
+建立本地学术文献库，支持导入 PDF、Word 和文本文件，按需填写或修改书目信息，搜索文献并将其加入研究项目。
+
+双击论文或书籍即可阅读，再次打开时可恢复上次阅读位置。文献库与私人研究结构保存在你的 Mac 本地。
+
+### 学术 PDF 阅读器
+
+AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
+
+- 连续滚动、PDF 搜索和缩放。
+- 阅读位置恢复与阅读进度。
+- 高亮与批注。
+- 专注模式与可选的文档目录。
+- 从选中文字直接进入研究操作。
+
+阅读中的一段文字不再只是孤立的高亮，还可以继续进入 Evidence 和论证工作流。
+
+### Claim 与 Evidence
+
+把论文中的具体文本保存为 **Evidence（证据）**，再关联到项目中的 **Claim（论点）**：
+
+```text
+论文 → 原文 → Evidence → Claim → 论证
 ```
 
-Checks exercise identity resolution/conflicts, atomic imports, note remapping, evidence links, submission transitions, SQLite durability/schema rejection/conflicting writers, OAuth state/checksum/form encoding, fixture-based Zotero pagination and OpenAlex decoding, and the exchange contract. No real credentials are needed for the offline suite. See [verification record](docs/VERIFICATION.md).
+由你选择支持、质疑、限定、扩展或背景关系。证据保留来源、页码、引文以及可用的选区锚点，可以返回 Reader 中的原文位置。
 
-See [Impact and full-text delivery record](docs/IMPACT_AND_FULL_TEXT.md) for Phase A–H behavior, migration, changed files and verification boundaries.
+内部 ID 不会显示在日常界面中。你看到的是论点、来源文献、原文与位置，而不是数据库编号。
 
-See [file-first reading and URL-first submissions](docs/FILE_FIRST_WORKFLOW.md) for supported formats and automation boundaries.
+### AcaTex Research Marks
 
-See [interaction polish and mouse verification](docs/INTERACTION_POLISH.md) for full-area hit targets, shared feedback, trailing disclosure arrows and motion refinements.
+连接已保存的本地 AcaTex 项目，即可读取：
 
-See [interface and language notes](docs/INTERFACE.md) for the latest visual refinement.
+- Research Question / 研究问题
+- Claim / 论点
+- Hypothesis / 假设
+- Finding / 发现
 
-## Open source
+标记保留稳定的底层身份。原有标记修改后，AcaTerminal 能识别同一对象的更新，避免重复创建；出现冲突时，保留版本供你审阅。
 
-AcaTerminal is licensed under GNU GPL version 3 (`GPL-3.0-only`); see [LICENSE](LICENSE) and [COPYRIGHT](COPYRIGHT). No reference-project implementation or asset has been incorporated. The source repository must not include `dist`, credentials or local research databases.
+相关操作包括：
 
-Read [ARCHITECTURE](ARCHITECTURE.md), [CONTRIBUTING](CONTRIBUTING.md), [prior-art research](docs/PRIOR_ART.md) and the [connector guide](docs/CONNECTOR_GUIDE.md).
+- 在本地编辑标记文本。
+- 在访达中显示对应 AcaTex 项目。
+- 查找相关论文。
+- 将 Research Marks 导出为本地交换文件。
 
-## Advanced research (build 7)
+连接项目不需要账号，也不会上传论文正文。导出标记不会修改源稿件。支持格式与兼容性见 [Research Marks 说明](docs/ACATEX_RESEARCH_MARKS.md)。
 
-Dock reopening now restores the existing main window and Reader state. Project tabs add a navigable Claim Graph, explainable OpenAlex discovery, local literature snapshots and aggregated project changes. See [advanced research](docs/ADVANCED_RESEARCH.md) and [window lifecycle verification](docs/WINDOW_LIFECYCLE.md) for behavior, migration, privacy and test boundaries.
+### 相关文献发现
 
-### AcaTex Research Marks — v0.1 build 10
+围绕项目已有文献寻找相关研究，再判断它们与研究问题、论点或假设的关系：
 
-Connect a saved local AcaTex project from the project menu. Questions, Claims, Hypotheses and Findings appear in 论证; selected PDF text can become linked evidence. Stable IDs, explicit evidence relationships, three-way conflicts and local JSON exchange connect the two apps without uploading research. This release changes AcaTerminal only and reads existing saved AcaTex projects. Export writes a local exchange file; applying it or navigating to an exact mark requires AcaTex-side support and is not claimed here. Internal IDs stay out of the daily interface. [Workflow and compatibility](docs/ACATEX_RESEARCH_MARKS.md).
+- 接下来应该读什么？
+- 哪些研究与这个项目相关？
+- 哪些文献可能与当前论点有关？
+- 当前文献集合可能遗漏了什么？
+
+推荐会附带原因，并支持相关性反馈。「可能支持」「可能质疑」属于**基于关键词、需要核实的建议**，不是系统替你作出的学术判断。OpenAlex 查询使用公开文献标识符，私人标记文本仅在本机匹配返回的公开结果。
+
+### 研究项目
+
+每个 Project 可以对应一篇论文、一个研究问题或一条长期研究议程，集中管理文献、Claims、Evidence、Research Marks、相关文献发现与研究动态。
+
+项目界面分为三个主要视图：
+
+**文献 · 论证 · 动态**
+
+让管理资料、构建论证和查看变化各有清楚的位置。
+
+### 投稿追踪
+
+研究并不会在稿件写完时结束。AcaTerminal 可以记录期刊、稿件标题、投稿日期、Manuscript ID、投稿系统网址、当前状态和状态历史。
+
+从网址开始，获取可用信息后再补充详情。**私有期刊投稿状态仍以手动更新为主**，受支持的 OpenReview 公开决定可刷新。不会模拟期刊登录或保存期刊账号密码。
+
+### 研究影响力
+
+通过 **OpenAlex** 查看论文与引用信息：
+
+- 明确标注数据来源的引用数量。
+- 年度、累计和单篇论文图表。
+- 本地保留的引用快照与新检测到的引用文献。
+- Today 中的研究影响力更新。
+
+可以保存 **Google Scholar 主页链接**并在浏览器打开；AcaTerminal 不抓取 Google Scholar，也不导入其引用数量。
+
+通知设置涵盖新引用、投稿状态变化和重要文献动态，需要 macOS 通知权限。监测依赖应用内刷新，不是持续运行的云端服务；实际验证范围见 [验证记录](docs/BUILD10_VERIFICATION.md)和[当前限制](docs/DEVELOPMENT.md#known-boundaries)。
+
+### 外部服务
+
+| 服务 | 用途 |
+| --- | --- |
+| **Zotero** | 通过官方本地 API 或只读 Web API 密钥导入分类、条目、元数据与笔记。 |
+| **OpenAlex** | 获取论文元数据、相关研究与引用信息。 |
+| **ORCID** | 查询研究者身份信息；开发者 OAuth 流程需使用自行注册的客户端。 |
+
+核心研究工作区保持本地优先，需要外部学术数据时再连接相应服务。Zotero 仍是文献库来源，AcaTerminal 不取代它。
+
+### 本地优先与隐私
+
+研究项目可能包含尚未发表的稿件、假设、论点、证据和阅读批注，因此核心研究数据默认保存在本地。
+
+外部服务用于所请求的元数据、引用信息与可访问全文。私人笔记、Claim、Evidence、稿件和 PDF 不会上传给文献发现服务。API 凭据存储在 macOS Keychain 中；AcaTerminal 本身不加密本地研究数据库。
+
+使用第三方服务时，请同时查看其隐私政策与使用条款。[存储与备份说明](docs/DEVELOPMENT.md#storage-and-privacy)
+
+### 界面
+
+- 跟随系统、浅色、深色与护眼模式。
+- English 与简体中文。
+- 克制的过渡动画，尊重 Reduce Motion。
+- 专注模式与 macOS 原生交互。
+
+整体视觉方向与 AcaTex 保持一致：让研究内容成为界面的主体。
+
+### 当前平台与阶段
+
+第一版面向 **macOS 13 及以上版本**，不包含其他平台。
+
+当前为**早期开源版本 v0.1 build 10**，首先建立基础研究链：
+
+```text
+文献 → 阅读 → Evidence → Claim / 论证
+          → 研究项目 → 投稿 → 影响力
+```
+
+功能和数据结构仍会继续完善。当前构建使用本地 ad-hoc 签名，尚不是经过 Developer ID 签名和公证的发行包。[已验证内容与剩余边界](docs/BUILD10_VERIFICATION.md)
+
+### 从源码构建
+
+需要 macOS 13+，以及 Xcode 或 Command Line Tools 提供的 Apple Swift 5.8+，无需下载第三方 Swift 包。
+
+```sh
+git clone https://github.com/DarcyLuai/AcaTerminal.git
+cd AcaTerminal
+./scripts/package.sh --check
+open dist/AcaTerminal.app
+```
+
+构建选项、测试、存储和详细限制见[开发指南](docs/DEVELOPMENT.md)。
+
+### 与 AcaTex 的关系
+
+**AcaTex** 更关注学术论文的写作与结构。
+
+**AcaTerminal** 更关注文献、证据、论证、项目、投稿和研究影响力。它可以读取已保存 AcaTex 项目的结构化 Research Marks，并将其用于项目工作流。
+
+两个应用也可以分别独立使用。
+
+### 开源
+
+欢迎 Bug reports、功能建议、Pull requests 和学术工作流反馈。如果你正在真实研究项目中使用 AcaTerminal，也欢迎分享使用体验。
+
+- [贡献指南](CONTRIBUTING.md)
+- [架构](ARCHITECTURE.md)
+- [连接器开发指南](docs/CONNECTOR_GUIDE.md)
+- [参考项目与独立实现](docs/PRIOR_ART.md)
+- [反馈问题](https://github.com/DarcyLuai/AcaTerminal/issues)
+
+### 许可证
+
+AcaTerminal 使用 **GNU General Public License v3.0 only（`GPL-3.0-only`）**。详情见 [LICENSE](LICENSE) 与 [COPYRIGHT](COPYRIGHT)。
