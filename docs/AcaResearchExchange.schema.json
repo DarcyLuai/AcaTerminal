@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AcaResearchExchange v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "type", "citeKey", "title", "authors", "projectIDs", "sources"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "type": {"const": "citation"},
+    "doi": {"type": "string"},
+    "citeKey": {"type": "string", "minLength": 1},
+    "title": {"type": "string"},
+    "authors": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["name"], "properties": {"name": {"type": "string"}, "orcid": {"type": "string"}}}},
+    "year": {"type": "integer"},
+    "projectIDs": {"type": "array", "items": {"type": "string", "format": "uuid"}},
+    "sources": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["provider", "externalID", "lastSynced", "metadata"], "properties": {"provider": {"type": "string"}, "externalID": {"type": "string"}, "url": {"type": "string", "format": "uri"}, "lastSynced": {"type": "string", "format": "date-time"}, "metadata": {"type": "object", "additionalProperties": {"type": "string"}}}}}
+  }
+}

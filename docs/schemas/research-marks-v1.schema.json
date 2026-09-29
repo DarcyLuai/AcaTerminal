@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Aca Research Marks v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "sourceApp",
+    "sourceDocument",
+    "projectID",
+    "generatedAt",
+    "marks"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "sourceApp": {
+      "type": "string"
+    },
+    "sourceDocument": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projectID": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "marks": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "$ref": "#/$defs/mark"
+      }
+    }
+  },
+  "$defs": {
+    "mark": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "text",
+        "sourceApp",
+        "sourceDocument",
+        "projectID",
+        "createdAt",
+        "updatedAt",
+        "status",
+        "links"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "type": {
+          "enum": [
+            "researchQuestion",
+            "claim",
+            "hypothesis",
+            "finding",
+            "evidence",
+            "note"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 500000
+        },
+        "sourceApp": {
+          "type": "string"
+        },
+        "sourceDocument": {
+          "type": "string"
+        },
+        "projectID": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "enum": [
+            "active",
+            "archived",
+            "deleted",
+            "unresolved"
+          ]
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "targetID",
+              "relationship"
+            ],
+            "properties": {
+              "targetID": {
+                "type": "string"
+              },
+              "relationship": {
+                "enum": [
+                  "supports",
+                  "challenges",
+                  "qualifies",
+                  "extends",
+                  "background",
+                  "contradicts"
+                ]
+              }
+            }
+          }
+        },
+        "anchorNodeID": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "object",
+          "required": [
+            "researchObjectID",
+            "page",
+            "quote",
+            "anchor"
+          ],
+          "properties": {
+            "researchObjectID": {
+              "type": "string"
+            },
+            "page": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "string"
+            },
+            "anchor": {
+              "type": "object",
+              "required": [
+                "locations"
+              ],
+              "properties": {
+                "documentID": {
+                  "type": "string"
+                },
+                "locations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "page",
+                      "x",
+                      "y",
+                      "width",
+                      "height"
+                    ],
+                    "properties": {
+                      "page": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "x": {
+                        "type": "number"
+                      },
+                      "y": {
+                        "type": "number"
+                      },
+                      "width": {
+                        "type": "number"
+                      },
+                      "height": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "sourceURL": {
+              "type": "string",
+              "format": "uri"
+            },
+            "sourceReference": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}

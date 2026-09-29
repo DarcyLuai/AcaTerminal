@@ -1,0 +1,13 @@
+name: macOS checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build native modules and run offline checks
+        run: ./scripts/build.sh --check
+      - name: Package local app
+        run: ./scripts/package.sh
