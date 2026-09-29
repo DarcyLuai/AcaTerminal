@@ -1,10 +1,18 @@
 <a id="english"></a>
 
-# AcaTerminal
+<p align="center">
+  <img src="Resources/AppIcon.png" width="128" height="128" alt="AcaTerminal app icon">
+</p>
 
-**A local-first research workspace for reading, organizing, connecting, and tracking academic work.**
+<h1 align="center">AcaTerminal</h1>
 
-[English](#english) · [中文](#chinese)
+<p align="center">
+  <strong>A local-first research workspace for reading, organizing, connecting, and tracking academic work.</strong>
+</p>
+
+<p align="center">
+  <a href="#english">English</a> · <a href="#chinese">中文</a>
+</p>
 
 AcaTerminal is an open-source desktop workspace designed around the academic research lifecycle.
 
@@ -21,13 +29,13 @@ AcaTerminal is built around these connections. The first release focuses on six 
 - **Library** — manage and read academic papers.
 - **Projects** — organize literature around research projects.
 - **Arguments** — connect claims and evidence.
-- **Research Marks** — work with structured research marks from AcaTex.
+- **Research Marks** — work with structured research marks from [AcaTex](https://github.com/DarcyLuai/AcaTeX).
 - **Submissions** — track manuscripts and submission history.
 - **Impact** — follow publications and citation information.
 
 ## Features
 
-### Research Library
+### 📚 Research Library
 
 Keep academic papers in a local research library.
 
@@ -39,7 +47,7 @@ Keep academic papers in a local research library.
 
 Your library and private research structure remain on your Mac.
 
-### Academic PDF Reader
+### 📖 Academic PDF Reader
 
 AcaTerminal includes a native PDFKit reader designed for research.
 
@@ -51,7 +59,7 @@ AcaTerminal includes a native PDFKit reader designed for research.
 
 Selected passages can become part of your research workflow instead of remaining isolated highlights.
 
-### Claims & Evidence
+### 🧩 Claims & Evidence
 
 Use passages from papers as **Evidence** and connect them to **Claims** inside a project:
 
@@ -63,9 +71,9 @@ Choose the relationship yourself: supports, challenges, qualifies, extends, or b
 
 Internal identifiers remain hidden from the everyday interface. AcaTerminal presents research objects through their content, source, and location.
 
-### AcaTex Research Marks
+### ✍️ AcaTex Research Marks
 
-Connect a saved local AcaTex project to read its structured research marks:
+Connect a saved local [AcaTex](https://github.com/DarcyLuai/AcaTeX) project to read its structured research marks:
 
 - Research Question
 - Claim
@@ -83,7 +91,7 @@ Available actions include:
 
 Connecting a project does not require an account or upload manuscript content. Exporting marks does not modify the source manuscript. See [Research Marks](docs/ACATEX_RESEARCH_MARKS.md) for supported formats and compatibility.
 
-### Literature Discovery
+### 🔎 Literature Discovery
 
 Find literature related to a project's existing sources, then consider its relevance to your research questions and arguments.
 
@@ -96,7 +104,7 @@ Discovery helps you explore:
 
 Recommendations include reasons and feedback actions. Potential support or challenge labels are **keyword-based suggestions to verify**, not academic judgments. OpenAlex queries use public paper identifiers; private mark text is matched locally against returned public results.
 
-### Research Projects
+### 🗂️ Research Projects
 
 A project can represent a paper, a research question, or a longer research agenda. It brings together literature, claims, evidence, Research Marks, related-paper discovery, and research activity.
 
@@ -106,7 +114,7 @@ The project interface has three primary views:
 
 Manage sources, develop arguments, and review changes without crowding them into one screen.
 
-### Submission Tracking
+### 📤 Submission Tracking
 
 Keep the research lifecycle visible after a manuscript leaves the writing environment.
 
@@ -114,7 +122,7 @@ Record the journal, manuscript title, submission date, manuscript ID, submission
 
 Start with a URL and supplement the available information. **Private journal statuses are updated manually**; supported public OpenReview decisions can be refreshed. AcaTerminal does not automate journal logins or store journal passwords.
 
-### Research Impact
+### 📈 Research Impact
 
 Follow publications and citation information using **OpenAlex**:
 
@@ -127,7 +135,7 @@ You can also save a **Google Scholar profile link** to open in your browser. Aca
 
 Notification preferences cover new citations, submission changes, and important literature changes. Native notifications require macOS permission. Monitoring runs through in-app refreshes, not an always-running cloud service; see the [verification record](docs/BUILD10_VERIFICATION.md) and [current limits](docs/DEVELOPMENT.md#known-boundaries).
 
-### Connected Services
+### 🔗 Connected Services
 
 | Service | Role |
 | --- | --- |
@@ -182,7 +190,7 @@ See the [development guide](docs/DEVELOPMENT.md) for build options, tests, stora
 
 ## Relationship with AcaTex
 
-**AcaTex** focuses on writing and structuring academic manuscripts.
+**[AcaTex](https://github.com/DarcyLuai/AcaTeX)** focuses on writing and structuring academic manuscripts.
 
 **AcaTerminal** focuses on literature, evidence, arguments, projects, submissions, and research impact. It can read structured Research Marks from saved AcaTex projects and use them in its project workflow.
 
@@ -225,17 +233,17 @@ AcaTerminal 希望连接这一整条研究链。第一版主要覆盖：
 - **文献库** — 管理与阅读论文。
 - **研究项目** — 围绕具体研究组织文献。
 - **论证** — 管理 Claim 与 Evidence。
-- **Research Marks** — 使用来自 AcaTex 的结构化研究标记。
+- **Research Marks** — 使用来自 [AcaTex](https://github.com/DarcyLuai/AcaTeX) 的结构化研究标记。
 - **投稿** — 记录稿件与投稿进度。
 - **影响力** — 查看论文与引用信息。
 
-### 文献库
+### 📚 文献库
 
 建立本地学术文献库，支持导入 PDF、Word 和文本文件，按需填写或修改书目信息，搜索文献并将其加入研究项目。
 
 双击论文或书籍即可阅读，再次打开时可恢复上次阅读位置。文献库与私人研究结构保存在你的 Mac 本地。
 
-### 学术 PDF 阅读器
+### 📖 学术 PDF 阅读器
 
 AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 
@@ -247,7 +255,7 @@ AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 
 阅读中的一段文字不再只是孤立的高亮，还可以继续进入 Evidence 和论证工作流。
 
-### Claim 与 Evidence
+### 🧩 Claim 与 Evidence
 
 把论文中的具体文本保存为 **Evidence（证据）**，再关联到项目中的 **Claim（论点）**：
 
@@ -259,9 +267,9 @@ AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 
 内部 ID 不会显示在日常界面中。你看到的是论点、来源文献、原文与位置，而不是数据库编号。
 
-### AcaTex Research Marks
+### ✍️ AcaTex Research Marks
 
-连接已保存的本地 AcaTex 项目，即可读取：
+连接已保存的本地 [AcaTex](https://github.com/DarcyLuai/AcaTeX) 项目，即可读取：
 
 - Research Question / 研究问题
 - Claim / 论点
@@ -279,7 +287,7 @@ AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 
 连接项目不需要账号，也不会上传论文正文。导出标记不会修改源稿件。支持格式与兼容性见 [Research Marks 说明](docs/ACATEX_RESEARCH_MARKS.md)。
 
-### 相关文献发现
+### 🔎 相关文献发现
 
 围绕项目已有文献寻找相关研究，再判断它们与研究问题、论点或假设的关系：
 
@@ -290,7 +298,7 @@ AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 
 推荐会附带原因，并支持相关性反馈。「可能支持」「可能质疑」属于**基于关键词、需要核实的建议**，不是系统替你作出的学术判断。OpenAlex 查询使用公开文献标识符，私人标记文本仅在本机匹配返回的公开结果。
 
-### 研究项目
+### 🗂️ 研究项目
 
 每个 Project 可以对应一篇论文、一个研究问题或一条长期研究议程，集中管理文献、Claims、Evidence、Research Marks、相关文献发现与研究动态。
 
@@ -300,13 +308,13 @@ AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 
 让管理资料、构建论证和查看变化各有清楚的位置。
 
-### 投稿追踪
+### 📤 投稿追踪
 
 研究并不会在稿件写完时结束。AcaTerminal 可以记录期刊、稿件标题、投稿日期、Manuscript ID、投稿系统网址、当前状态和状态历史。
 
 从网址开始，获取可用信息后再补充详情。**私有期刊投稿状态仍以手动更新为主**，受支持的 OpenReview 公开决定可刷新。不会模拟期刊登录或保存期刊账号密码。
 
-### 研究影响力
+### 📈 研究影响力
 
 通过 **OpenAlex** 查看论文与引用信息：
 
@@ -319,7 +327,7 @@ AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 
 通知设置涵盖新引用、投稿状态变化和重要文献动态，需要 macOS 通知权限。监测依赖应用内刷新，不是持续运行的云端服务；实际验证范围见 [验证记录](docs/BUILD10_VERIFICATION.md)和[当前限制](docs/DEVELOPMENT.md#known-boundaries)。
 
-### 外部服务
+### 🔗 外部服务
 
 | 服务 | 用途 |
 | --- | --- |
@@ -374,7 +382,7 @@ open dist/AcaTerminal.app
 
 ### 与 AcaTex 的关系
 
-**AcaTex** 更关注学术论文的写作与结构。
+**[AcaTex](https://github.com/DarcyLuai/AcaTeX)** 更关注学术论文的写作与结构。
 
 **AcaTerminal** 更关注文献、证据、论证、项目、投稿和研究影响力。它可以读取已保存 AcaTex 项目的结构化 Research Marks，并将其用于项目工作流。
 
