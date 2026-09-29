@@ -57,7 +57,10 @@ struct ResearchMarkRow: View {
                 Spacer(minLength: 8)
                 Menu {
                     Button(tr("Edit mark…")) { text = claim.text; edit = true }
-                    if store.database.binding(for: claim.id) != nil { Button(tr("Show AcaTex Project")) { store.openAcaTexMark(claim.id) } }
+                    if store.database.binding(for: claim.id) != nil {
+                        Button(tr(store.openingAcaTexMark == claim.id ? "Opening AcaTex…" : "Open in AcaTex")) { store.openAcaTexMark(claim.id) }
+                            .disabled(store.openingAcaTexMark != nil)
+                    }
                     if store.database.syncStatus(for: claim.id) == .conflict { Button(tr("Review conflict…")) { conflict = true } }
                     Button(tr("Find related papers")) { store.discoveryMarkID = claim.id; store.projectTab = "Discover" }
                     Button(tr("Export Research Mark…")) { store.sendMarksToAcaTex(claim.projectID, claimIDs: [claim.id]) }.disabled(store.markConnecting)

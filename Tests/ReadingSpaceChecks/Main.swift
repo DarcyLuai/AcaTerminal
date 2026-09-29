@@ -56,6 +56,14 @@ import AcaCore
             let selected = document.page(at: 13)!.selection(for: NSRange(location: 0, length: 50))!
             session.pdfView.setCurrentSelection(selected, animate: false); session.selectionChanged()
             let quote = session.selection!.quote, locations = session.selection!.locations
+            var evidence = Evidence(paperID: paper.id, page: "14", quote: quote, relationship: .qualifies)
+            evidence.documentID = session.documentID; evidence.locations = locations
+            try check(session.reveal(evidence), "Evidence navigation resolves the stored passage")
+            let destination = session.pdfView.currentDestination!.point
+            for _ in 0..<20 { session.layoutViewport() }
+            try await settle()
+            try check(session.pdfView.currentDestination!.point == destination && session.pdfView.currentSelection?.string?.trimmingCharacters(in: .whitespacesAndNewlines) == quote,
+                      "Repeated unchanged layouts do not overwrite explicit evidence navigation")
             session.zoom(1.1); try await settle()
             try check(session.pdfView.currentSelection?.string?.trimmingCharacters(in: .whitespacesAndNewlines) == quote && session.selection?.locations == locations, "Zoom preserves text selection and Evidence coordinates")
             session.toggleFocus(); try await settle()

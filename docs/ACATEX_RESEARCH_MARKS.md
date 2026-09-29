@@ -1,4 +1,4 @@
-# AcaTex ↔ AcaTerminal Research Marks — v0.1 build 10
+# AcaTex ↔ AcaTerminal Research Marks — v0.1 build 11
 
 ## User workflow
 
@@ -6,9 +6,11 @@ In Project → ⋯ choose **Connect AcaTex Project…**, then select a saved loc
 
 Project → 论证 groups Questions, Claims, Hypotheses and Findings. Reader selection → right click → Evidence offers all these project marks and an optional new Claim. Choose a relationship yourself; the default is background. Evidence rows open the original PDF page/selection using the existing Reader.
 
-**Export Research Marks…** writes an explicitly chosen `.acaresearch.json` exchange. It never modifies manuscript text. Importing that file requires a compatible consumer; the currently installed AcaTex 0.8.6 has no exchange-import or exact-mark URL handler. **Show AcaTex Project** reveals the connected source in Finder. It does not promise exact navigation or copy an internal ID to the clipboard.
+**Export Research Marks…** writes an explicitly chosen `.acaresearch.json` exchange. In an AcaTex build advertising Research Bridge v1, use **File → Import Research Evidence…**, review the proposed relationships and select the links to retain. This stores evidence locally without rewriting manuscript prose or creating/updating argument marks. Omitted relationships are not deletions. Evidence can be exported from AcaTex for local backup or transfer.
 
-This release changes and delivers **AcaTerminal only**. It reads the existing saved AcaTex format without requiring an AcaTex companion, account, or network upload. AcaTex-side evidence ingestion, applying exported edits, and exact mark navigation remain compatibility boundaries. The interchange schema and route abstraction are retained for future compatible consumers. Previously isolated companion experiments are outside this delivery and are not prerequisites.
+**Open in AcaTex** now dispatches `acatex://research?document=…&mark=…` to an explicitly verified companion application. The app must advertise `AcaTeXResearchBridgeVersion = 1`, the AcaTex bundle identity, and the `acatex` URL scheme. Older installations fall back to Finder with an explanation. Navigation uses the original external mark ID, not the local UUID or display label. AcaTex resolves the local document, protects unsaved edits and navigates to the anchored paragraph. Its evidence panel can return to Terminal's exact source selection.
+
+The companion feature is capability-detected: version number 0.8.6 alone is insufficient. Build 11 has been tested against the locally built AcaTex Research Bridge companion, including installed-app navigation. It does not require a cloud account. Automatic evidence synchronization, applying argument edits to AcaTex and inserting new Claims into a manuscript remain outside this implementation.
 
 The interface shows mark type, text, provenance and necessary change/conflict status. Stable IDs remain internal; no invented visible C1/H1 numbering is added. Details of heuristic discovery connections sit inside the existing “Why this paper?” disclosure. Project navigation remains 文献 / 论证 / 动态.
 
@@ -28,7 +30,7 @@ The interface shows mark type, text, provenance and necessary change/conflict st
 Evidence includes the ResearchObject UUID, physical page label, quote, document fingerprint, and normalized PDF crop-box rectangles (zero-based physical page). Reader first uses matching-document rectangles, then quote lookup on the source page, then a page-only fallback. Scanned PDFs without selectable text do not acquire fabricated text anchors. Changed source files cannot be promised the same selection.
 
 - `acaterminal://paper/<UUID>/evidence/<UUID>` routes only to an existing local evidence/paper pair.
-- `acatex://research?document=<encoded ID>&mark=<encoded ID>` remains a schema/routing abstraction. This Terminal release does not dispatch that URL to an unsupported installed AcaTex application.
+- `acatex://research?document=<encoded ID>&mark=<encoded ID>` is dispatched only to a compatible installed AcaTex application; document and mark IDs are URL-encoded independently.
 - Source references and exchange files may include local paths. They are local artifacts, not sent to network providers.
 
 ## Storage and privacy
@@ -42,3 +44,7 @@ Project Discovery still sends at most five validated public DOI/OpenAlex IDs. Pr
 `./scripts/build.sh --check` includes native AcaTex import, stable identity, duplicate prevention, conflicts, export guards, per-mark evidence relationships, persistence, migration, local discovery hints and route parsing. `./scripts/check-research-marks.sh <isolated-dir> prepare` generates a native AcaTex project and an independent PDF, captures a real PDFKit selection, saves SQLite and exports evidence.
 
 These generated fixtures are not demo content inserted into user libraries. Build 9's integration report records the earlier isolated companion experiment; it is historical, not a requirement or current deliverable. See `BUILD10_VERIFICATION.md` for this Terminal-only polish and its verified boundaries.
+
+## Build 11 verification
+
+See [the integration report](BUILD11_VERIFICATION.md). This update adds no database migration: SQLite version 1 and payload format 5 remain unchanged. `scripts/check-acatex-navigation.sh` verifies capability fallback and opaque-ID routing. The Reader layout regression suite verifies that repeated unchanged layouts do not overwrite explicit evidence navigation.

@@ -670,3 +670,6 @@
 "Export research marks and evidence links as a local exchange file. Your manuscript is unchanged." = "Export research marks and evidence links as a local exchange file. Your manuscript is unchanged.";
 
 "Research exchange exported. Importing it requires an application that supports this format; the connected manuscript has not been changed." = "Research exchange exported. Importing it requires an application that supports this format; the connected manuscript has not been changed.";
+"Opening AcaTex…" = "Opening AcaTex…";
+"Could not open AcaTex." = "Could not open AcaTex.";
+"Install an AcaTex version with Research Bridge support to open this mark directly. The connected project is shown in Finder." = "Install an AcaTex version with Research Bridge support to open this mark directly. The connected project is shown in Finder.";

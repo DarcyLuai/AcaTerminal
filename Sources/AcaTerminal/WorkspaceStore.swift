@@ -26,6 +26,7 @@ enum EditorSheet: String, Identifiable { case paper, project, submission; var id
     @Published var databaseRevision = 0
     @Published var projectTab = "Overview"
     @Published var markConnecting = false
+    @Published var openingAcaTexMark: UUID?
     @Published var markRefreshing: Set<UUID> = []
     @Published var markErrors: [UUID: String] = [:]
     @Published var discoveryMarkID: UUID?

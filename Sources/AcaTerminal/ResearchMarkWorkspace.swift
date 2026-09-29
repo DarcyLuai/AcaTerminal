@@ -48,8 +48,23 @@ extension WorkspaceStore {
         change { db in guard let i = db.claims.firstIndex(where: { $0.id == id }) else { return }; db.claims[i].text = text.trimmingCharacters(in: .whitespacesAndNewlines); db.claims[i].updatedAt = Date() }
     }
     func openAcaTexMark(_ claimID: UUID) {
+        guard openingAcaTexMark == nil else { return }
         guard let binding = database.binding(for: claimID), let connection = database.acaTexConnections?.first(where: { $0.id == binding.connectionID }) else { return }
-        NSWorkspace.shared.activateFileViewerSelecting([connection.fileURL])
+        let route = ResearchRoute.acaTex(documentID: connection.documentID, markID: binding.externalID)
+        guard let application = AcaTexNavigation.applicationURL(for: route) else {
+            NSWorkspace.shared.activateFileViewerSelecting([connection.fileURL])
+            message = tr("Install an AcaTex version with Research Bridge support to open this mark directly. The connected project is shown in Finder.")
+            return
+        }
+        openingAcaTexMark = claimID
+        let configuration = NSWorkspace.OpenConfiguration(); configuration.activates = true
+        // Target the verified application explicitly: an older copy may own the URL scheme.
+        NSWorkspace.shared.open([route], withApplicationAt: application, configuration: configuration) { [weak self] _, failure in
+            Task { @MainActor in
+                self?.openingAcaTexMark = nil
+                if let failure { self?.error = tr("Could not open AcaTex.") + " " + failure.localizedDescription }
+            }
+        }
     }
     func sendMarksToAcaTex(_ projectID: UUID, claimIDs: Set<UUID>) {
         guard let connection = database.acaTexConnections?.first(where: { $0.projectID == projectID }) else { error = tr("Connect an AcaTex project first."); return }

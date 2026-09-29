@@ -192,16 +192,22 @@ import AcaCore
     }
     func layoutViewport(anchor requestedAnchor: ReadingPosition? = nil) {
         guard !closed, let viewport = viewport, viewport.bounds.width > 0, viewport.bounds.height > 0, !viewportChanging else { return }
-        viewportChanging = true
         let anchor = requestedAnchor ?? capture()
         let reference = anchor.flatMap { pdfView.document?.page(at: $0.page) } ?? pdfView.currentPage ?? pdfView.document?.page(at: 0)
         let width = max(1, viewport.bounds.width * min(1, readingScale))
         let frame = NSRect(x: (viewport.bounds.width - width) / 2, y: 0, width: width, height: viewport.bounds.height)
-        pdfView.frame = frame
-        if let page = reference {
-            pdfView.autoScales = false
+        let desired = reference.map { page in
             let fit = max(0.01, (width - pagePadding) / max(1, pageWidth(page)))
-            let desired = min(pdfView.maxScaleFactor, max(pdfView.minScaleFactor, fit * max(1, readingScale)))
+            return min(pdfView.maxScaleFactor, max(pdfView.minScaleFactor, fit * max(1, readingScale)))
+        }
+        // SwiftUI also lays out after selection/progress updates. Reapplying an unchanged
+        // viewport would restore PDFKit's transient destination over the explicit passage jump.
+        if requestedAnchor == nil, pdfView.frame == frame,
+           desired.map({ abs(pdfView.scaleFactor - $0) <= 0.0001 }) ?? true { return }
+        viewportChanging = true
+        pdfView.frame = frame
+        if let desired {
+            pdfView.autoScales = false
             if abs(pdfView.scaleFactor - desired) > 0.0001 { pdfView.scaleFactor = desired }
             pdfView.layoutSubtreeIfNeeded()
             if let anchor = anchor { restore(anchor, zoom: false) }

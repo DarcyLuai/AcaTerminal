@@ -670,3 +670,6 @@
 "Export research marks and evidence links as a local exchange file. Your manuscript is unchanged." = "将研究标记和证据链接导出为本地交换文件。不会修改论文正文。";
 
 "Research exchange exported. Importing it requires an application that supports this format; the connected manuscript has not been changed." = "研究交换文件已导出。导入需由支持此格式的应用完成；已连接的论文正文未被修改。";
+"Opening AcaTex…" = "正在打开 AcaTex…";
+"Could not open AcaTex." = "无法打开 AcaTex。";
+"Install an AcaTex version with Research Bridge support to open this mark directly. The connected project is shown in Finder." = "安装支持 Research Bridge 的 AcaTex 版本后，即可直接定位研究标记。已在访达中显示连接的项目。";

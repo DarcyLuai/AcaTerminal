@@ -1,6 +1,6 @@
 # Development and verification
 
-Build instructions, storage details and current limits for AcaTerminal v0.1 build 10. Run commands from the repository root. For the product overview, see the [README](../README.md).
+Build instructions, storage details and current limits for AcaTerminal v0.1 build 11. Run commands from the repository root. For the product overview, see the [README](../README.md).
 
 ## Run on macOS
 
@@ -24,7 +24,7 @@ With full Xcode, open `Package.swift`, select the AcaTerminal executable and run
 - Unpaywall requires your contact email in Settings; its adapter has fixture coverage but no live verification in this build. System notifications require macOS permission. Event deduplication is tested; OS banner delivery/click routing still needs permission-enabled end-to-end verification.
 - Impact analytics currently use OpenAlex. Semantic Scholar, citation graphs and always-running/cloud monitoring are not included.
 - Crossref/Semantic Scholar and automated journal connectors are extension points, not shipped implementations. There is no Google Scholar scraper.
-- AcaTex export is implemented; AcaTex-side ingestion and manuscript round-trip are not.
+- AcaTex Research Bridge v1 supports explicit evidence import and exact-mark navigation in a compatible companion build. Manuscript edits and creation of new AcaTex claims from exported marks remain unsupported; see [Research Marks](ACATEX_RESEARCH_MARKS.md).
 - No iOS app has been built. Shared modules declare iOS 16 compatibility but have not been compiled with an iOS SDK on this machine.
 - This MVP supports adding and connecting research; full editing/deletion, undo, accessibility audit, broader language coverage, incremental sync and large-library performance work remain before a stable, notarized distribution.
 

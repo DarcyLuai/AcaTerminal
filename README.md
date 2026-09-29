@@ -85,7 +85,7 @@ Imported marks preserve their underlying identity, allowing AcaTerminal to recog
 Available actions include:
 
 - Edit mark text locally.
-- Show the related AcaTex project in Finder.
+- Open the exact mark in a compatible AcaTex installation; older versions fall back to Finder.
 - Find related papers.
 - Export Research Marks to a local exchange file.
 
@@ -166,7 +166,7 @@ The visual direction follows AcaTex: research content should remain more promine
 
 The first version is built for **macOS 13 or later**. Other platforms are not included.
 
-AcaTerminal is an **early open-source release, v0.1 build 10**. The core workflow is:
+AcaTerminal is an **early open-source release, v0.1 build 11**. The core workflow is:
 
 ```text
 Literature → Reading → Evidence → Claims / Arguments
@@ -281,7 +281,7 @@ AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 相关操作包括：
 
 - 在本地编辑标记文本。
-- 在访达中显示对应 AcaTex 项目。
+- 在兼容的 AcaTex 版本中定位对应标记；旧版本回退到访达。
 - 查找相关论文。
 - 将 Research Marks 导出为本地交换文件。
 
@@ -358,7 +358,7 @@ AcaTerminal 内置基于原生 PDFKit 的学术阅读器，提供：
 
 第一版面向 **macOS 13 及以上版本**，不包含其他平台。
 
-当前为**早期开源版本 v0.1 build 10**，首先建立基础研究链：
+当前为**早期开源版本 v0.1 build 11**，首先建立基础研究链：
 
 ```text
 文献 → 阅读 → Evidence → Claim / 论证
